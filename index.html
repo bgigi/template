@@ -65,6 +65,19 @@ body {
     float: none;
   }
 }
+  .content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
  
    .mySlides {display:none;}
  </style>
@@ -75,7 +88,7 @@ body {
  <!-- Start tag and end tag sourround the visible body of the HTML document:-->
  <body>
     
-   <div class="header">
+   <div class="header" id="myHeader">
      <a href="#default" class="logo">Atena</a>
        <div class="header-right">
          <a class="active" href="#gallery">Gallery</a>
@@ -107,6 +120,20 @@ body {
     setTimeout(carousel, 2000); // Change image every 2 seconds
     }
    </script>
+  <script>
+    window.onscroll = function() {myFunction()};
+
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+        } else {
+       header.classList.remove("sticky");
+           }
+    }
+</script>
 
  <!-- Make it a habbit to "pack" HTML sections in div elements.
       Prepare yourself for giving each section a class name: -->
